@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Give Lively - Free Fundraising Tech</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+
     <style>
         /* General Reset and Font */
         body {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            color: white; 
-            background-color: black; /* Set the space outside the card to black */
+            /* Use Roboto as the primary font, falling back to sans-serif */
+            font-family: 'Roboto', sans-serif; 
+            color: #000; /* Default text color set to black */
+            background-color: black; 
             overflow: hidden; 
             min-height: 100vh;
             display: flex; 
@@ -24,9 +29,9 @@
             position: relative;
             width: 90%; 
             max-width: 1200px; 
-            aspect-ratio: 16 / 9; /* Maintain a consistent landscape ratio */
-            overflow: hidden; /* Clips content and video to rounded corners */
-            border-radius: 20px; /* Rounded corners for the entire card */
+            aspect-ratio: 16 / 9; 
+            overflow: hidden; 
+            border-radius: 20px; 
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
         }
 
@@ -42,7 +47,6 @@
         }
 
         .video-background video {
-            /* Ensures video covers the container */
             min-width: 100%;
             min-height: 100%;
             width: auto;
@@ -54,7 +58,7 @@
             object-fit: cover; 
         }
 
-        /* Dark Overlay for Text Readability */
+        /* Dark Overlay adjusted for better contrast with black text */
         .video-background::after {
             content: '';
             position: absolute;
@@ -62,7 +66,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.15); 
+            /* Make the overlay slightly lighter to ensure black text stands out */
+            background-color: rgba(255, 255, 255, 0.05); 
             z-index: -1;
         }
 
@@ -79,12 +84,11 @@
             box-sizing: border-box;
         }
 
-        /* Header/Logo */
-        .logo {
-            font-size: clamp(1.2rem, 3vw, 1.8rem); 
-            font-weight: 900;
+        /* Logo Image Styling */
+        .logo-img {
+            height: clamp(25px, 4vw, 40px); /* Responsive height for the logo */
+            width: auto;
             margin-top: 0;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
         }
 
         /* Main Headline */
@@ -97,11 +101,13 @@
 
         .headline {
             font-size: clamp(2.5rem, 5vw, 3.5rem); 
-            font-weight: 700;
+            /* Set font weight to 100 (Thin) for a sleek look */
+            font-weight: 100; 
             line-height: 1.2;
             margin: 0;
             max-width: 700px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+            color: #000; /* Ensure headline is black */
+            text-shadow: none;
         }
 
         /* Footer/Tagline */
@@ -111,11 +117,13 @@
 
         .tagline {
             font-size: clamp(0.7rem, 1.5vw, 0.9rem); 
-            font-weight: 400;
+            /* Set font weight to 400 (Regular) */
+            font-weight: 400; 
             line-height: 1.5;
             max-width: 700px;
             margin: 0;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            color: #000; /* Ensure footer text is black */
+            text-shadow: none;
         }
     </style>
 </head>
@@ -132,17 +140,24 @@
 
         <div class="content-container">
             <header>
-                <h1 class="logo">give lively</h1>
+                <img src="give-lively-logo.png" alt="give lively" class="logo-img">
             </header>
 
             <main>
-                <h2 class="headline">
+                <h1 class="headline">
                     Free fundraising tech for nonprofits,<br>fueled by values
-                </h2>
+                </h1>
             </main>
 
             <footer>
                 <p class="tagline">
                     Backed by philanthropists, guided by progressive values and trusted by 9,000+ organizations, 
                     we help nonprofits put more money toward their missions, **not tech fees**. No catches.
-                </p
+                </p>
+            </footer>
+        </div>
+
+    </div>
+
+</body>
+</html>
