@@ -5,20 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Give Lively - Free Fundraising Tech</title>
     
-    <!-- Load Tailwind CSS for utility classes (used to simplify the logo/text color change) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Using Inter, a modern, highly readable font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
 
     <style>
         /* General Reset and Font */
         body {
             margin: 0;
+            /* Site background is now WHITE */
             background-color: white; 
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Roboto', sans-serif; 
             color: #000; /* Default text color set to black */
             min-height: 100vh;
             display: flex; 
@@ -33,13 +30,12 @@
             width: 90%; 
             max-width: 1200px; 
             aspect-ratio: 16 / 9; 
-            /* Removed 'overflow: hidden' */
             border-radius: 20px; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Slightly softer shadow */
-            border: 1px solid #e5e7eb; /* Subtle border for definition */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+            overflow: hidden; /* Kept for video clipping */
         }
 
-        /* CSS Gradient Background (REPLACES VIDEO) */
+        /* 🎥 Video Background Styling */
         .video-background {
             position: absolute; 
             top: 0;
@@ -47,26 +43,22 @@
             width: 100%;
             height: 100%;
             z-index: -2; 
-            /* Added a colorful gradient to simulate the swirly video effect */
-            background: linear-gradient(135deg, 
-                #fcd34d 0%,    /* Amber */
-                #f87171 30%,   /* Red */
-                #a855f7 60%,   /* Violet */
-                #22d3ee 90%    /* Cyan */
-            );
-            background-size: 400% 400%;
-            animation: gradient-shift 15s ease infinite; /* Subtle animation */
-            border-radius: 20px;
-        }
-        
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            overflow: hidden;
         }
 
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover; 
+        }
 
-        /* Overlay to ensure text readability against the bright background */
+        /* Video Overlay: Now adds a strong WHITE overlay to brighten the video for BLACK text */
         .video-background::after {
             content: '';
             position: absolute;
@@ -74,10 +66,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Tweak: Use a stronger black overlay to ensure the black text stands out against the colorful gradient */
-            background-color: rgba(0, 0, 0, 0.4); 
+            /* Critical Change: Use a high-opacity white overlay to ensure black text contrast */
+            background-color: rgba(255, 255, 255, 0.7); 
             z-index: -1;
-            border-radius: 20px;
         }
 
         /* 📝 Content Overlay Styling */
@@ -91,16 +82,14 @@
             height: 100%; 
             padding: 30px 60px; 
             box-sizing: border-box;
-            color: white; /* CHANGE: Set text color to WHITE for high contrast against the dark overlay */
+            /* Text color relies on the body default (black) */
         }
 
-        /* Logo Icon (REPLACES IMAGE) */
-        .logo-icon {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            font-weight: 700;
-            color: white;
-            display: flex;
-            align-items: center;
+        /* Logo Image Styling */
+        .logo-img {
+            height: clamp(25px, 4vw, 40px); /* Responsive height for the logo */
+            width: auto;
+            margin-top: 0;
         }
 
         /* Main Headline */
@@ -117,8 +106,8 @@
             line-height: 1.2;
             margin: 0;
             max-width: 700px;
-            color: white; /* Ensure headline is white */
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Add subtle shadow for pop */
+            color: #000; /* Ensure headline is black */
+            text-shadow: none;
         }
 
         /* Footer/Tagline */
@@ -132,10 +121,10 @@
             line-height: 1.5;
             max-width: 700px;
             margin: 0;
-            color: white; /* Ensure footer text is white */
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            color: #000; /* Ensure footer text is black */
+            text-shadow: none;
         }
-
+        
         /* Mobile Adjustments */
         @media (max-width: 768px) {
             .content-container {
@@ -154,16 +143,18 @@
 
     <div class="card-wrapper">
 
-        <!-- This is now a colorful CSS gradient, replacing the external video (swirl-video.mp4) -->
-        <div class="video-background"></div>
+        <!-- RESTORED: Video Background with external asset -->
+        <div class="video-background">
+            <video loop muted autoplay preload="auto">
+                <source src="swirl-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
         <div class="content-container">
             <header>
-                <!-- This replaces the external image (give-lively-logo.png) with text -->
-                <div class="logo-icon">
-                    <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-8a1 1 0 00-2 0v4a1 1 0 102 0v-4zm4-4a1 1 0 10-2 0v8a1 1 0 102 0V6z" clip-rule="evenodd"></path></svg>
-                    give lively
-                </div>
+                <!-- RESTORED: Image Logo with external asset -->
+                <img src="give-lively-logo.png" alt="give lively" class="logo-img">
             </header>
 
             <main>
