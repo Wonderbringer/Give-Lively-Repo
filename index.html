@@ -13,10 +13,11 @@
         /* General Reset and Font */
         body {
             margin: 0;
-            /* Use Roboto as the primary font, falling back to sans-serif */
+            /* CHANGE: Site background is now white */
+            background-color: white; 
+            
             font-family: 'Roboto', sans-serif; 
             color: #000; /* Default text color set to black */
-            background-color: black; 
             overflow: hidden; 
             min-height: 100vh;
             display: flex; 
@@ -58,7 +59,7 @@
             object-fit: cover; 
         }
 
-        /* Dark Overlay adjusted for better contrast with black text */
+        /* Video Overlay: Now slightly darkens the video to ensure black text contrast */
         .video-background::after {
             content: '';
             position: absolute;
@@ -66,8 +67,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Make the overlay slightly lighter to ensure black text stands out */
-            background-color: rgba(255, 255, 255, 0.05); 
+            /* Tweak: Use a very subtle black overlay (low opacity) to darken the video slightly */
+            background-color: rgba(0, 0, 0, 0.05); 
             z-index: -1;
         }
 
